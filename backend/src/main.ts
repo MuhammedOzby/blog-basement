@@ -7,7 +7,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 function document(app: NestExpressApplication) {
   const documentConfig = new DocumentBuilder()
     .setTitle('Blog example')
-    .setDescription('The blog API description')
+    .setDescription('The blog SSR and API description')
     .setVersion('0.1')
     .build();
   const document = SwaggerModule.createDocument(app, documentConfig);
