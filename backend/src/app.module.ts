@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BlogModule } from './blog/blog.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './Entities/Post.enitity';
+import { PostModule } from './post/post.module';
 
 const DatabaseSettings = TypeOrmModule.forRoot({
   type: 'mysql',
@@ -16,7 +16,7 @@ const DatabaseSettings = TypeOrmModule.forRoot({
   synchronize: true,
 });
 @Module({
-  imports: [DatabaseSettings, BlogModule],
+  imports: [DatabaseSettings, PostModule],
   controllers: [AppController],
   providers: [AppService],
 })

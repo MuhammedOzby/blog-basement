@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
-  id: number;
+  postID: number;
 
   @ApiProperty({ example: 'Title', description: 'Post title' })
   @Column()
