@@ -1,18 +1,14 @@
-import { Controller, Get, Post, Render } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiOkResponse, ApiProperty } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @ApiProperty({
-    description: 'The age of a cat',
-    minimum: 1,
-    default: 1,
-  })
-  age: number;
-  @Post()
+  @ApiOkResponse({ description: 'Return main page SSR' })
+  @Get()
+  @Render('index')
   root() {
     return { message: 'Hello world!' };
   }
