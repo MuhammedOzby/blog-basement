@@ -16,6 +16,6 @@ export class PostService {
   }
 
   async insertOne(regedit: Post) {
-    return this.postRepository.insert(regedit);
+    return this.postRepository.save(regedit);
   }
 }
