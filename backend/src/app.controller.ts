@@ -12,4 +12,10 @@ export class AppController {
   root() {
     return { message: 'Hello world!' };
   }
+
+  @ApiOkResponse({ description: 'Return main page SSR' })
+  @Get('sitemap.xml')
+  sitemap() {
+    return this.appService.sitemapGenerator();
+  }
 }
