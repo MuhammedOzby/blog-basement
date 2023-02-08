@@ -9,7 +9,8 @@ import { Readable } from 'stream';
 export class AppService {
   constructor(@InjectRepository(Post) private readonly postRepository: Repository<Post>) {}
   async sitemapGenerator() {
-    const links = [{ url: '/page-1/', changefreq: 'daily', priority: 0.3 }];
+    const allPost = (await this.postRepository.find()).map((post) => ({ url: `/post/${post.postID}` }));
+    const links = [{ url: '/page-1/', changefreq: 'daily', priority: 0.3 }, ...allPost];
 
     // Create a stream to write to
     const stream = new SitemapStream({ hostname: 'https://...' });
