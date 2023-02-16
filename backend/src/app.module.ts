@@ -4,10 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './Entities/Post.enitity';
 import { PostModule } from './post/post.module';
-import { SettingsModule } from './settings/settings.module';
 import { Settings } from './Entities/Settings.Entity';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
 import { User } from './Entities/User.entity';
 
 const DatabaseSettings = TypeOrmModule.forRoot({
@@ -25,7 +22,7 @@ const DatabaseSettings = TypeOrmModule.forRoot({
 const dbEntities = [TypeOrmModule.forFeature([Post])];
 
 @Module({
-  imports: [DatabaseSettings, PostModule, SettingsModule, ...dbEntities, UsersModule, AuthModule],
+  imports: [DatabaseSettings, PostModule, ...dbEntities],
   controllers: [AppController],
   providers: [AppService],
 })
