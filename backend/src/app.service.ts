@@ -1,16 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Post } from './Entities/Post.enitity';
+import { Article } from './Entities/Article.enitity';
 import { Repository } from 'typeorm';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
 
+type SitemapList = Array<{
+  url: string;
+  changefreq: string;
+  priority: number;
+  lastmod: string;
+}>;
+
 @Injectable()
 export class AppService {
-  constructor(@InjectRepository(Post) private readonly postRepository: Repository<Post>) {}
+  constructor(@InjectRepository(Article) private readonly postRepository: Repository<Article>) {}
   async sitemapGenerator() {
-    const allPost = (await this.postRepository.find()).map((post) => ({ url: `/post/${post.postID}` }));
-    const links = [{ url: '/page-1/', changefreq: 'daily', priority: 0.3 }, ...allPost];
+    const allPost: SitemapList = (await this.postRepository.find()).map((article) => ({
+      url: `/article/${article.articleID}`,
+      changefreq: 'monthly',
+      priority: 0.5,
+      lastmod: article.dateModified.toISOString().split('T')[0],
+    }));
+    const links: SitemapList = [...allPost];
 
     // Create a stream to write to
     const stream = new SitemapStream({ hostname: 'https://...' });
