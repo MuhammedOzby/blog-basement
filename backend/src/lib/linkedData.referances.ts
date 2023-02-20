@@ -35,3 +35,11 @@ export type Article = {
   editor: Person;
   publisher: Person;
 };
+
+export interface WebSite {
+  '@context': string;
+  '@type': string;
+  name: string;
+  url: string;
+  description: string;
+}
