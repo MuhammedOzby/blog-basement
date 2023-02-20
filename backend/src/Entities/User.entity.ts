@@ -10,7 +10,7 @@ export class User {
   @Column()
   username: string;
 
-  @Column()
+  @Column({ select: false })
   @ApiProperty({
     example: 'pA$$wOrd',
     description: 'Github repostory link.',
@@ -19,15 +19,43 @@ export class User {
 
   @Column()
   @ApiProperty({
-    example: 'User real first name',
-    description: 'Github source link.',
+    example: 'User surname',
+    description: 'Family name etc.',
   })
-  firstName: string;
+  surname: string;
 
   @Column()
   @ApiProperty({
     example: 'User surname',
     description: 'Family name etc.',
   })
-  surname: string;
+  email: string;
+
+  @Column()
+  @ApiProperty({
+    example: 'User surname',
+    description: 'Family name etc.',
+  })
+  jobTitle: string;
+
+  @Column()
+  @ApiProperty({
+    example: 'User surname',
+    description: 'Family name etc.',
+  })
+  name: string;
+
+  @Column()
+  @ApiProperty({
+    example: 'User surname',
+    description: 'Family name etc.',
+  })
+  telephone: string;
+
+  @Column()
+  @ApiProperty({
+    example: 'User surname',
+    description: 'Family name etc.',
+  })
+  url: string;
 }

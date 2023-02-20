@@ -8,7 +8,7 @@ export class Settings {
 
   @ApiProperty({ description: 'Web site main URL with http or https' })
   @Column()
-  siteURL: string;
+  websiteURL: string;
 
   @ApiProperty({ description: 'Web site title & meta title' })
   @Column()
@@ -19,6 +19,6 @@ export class Settings {
   description: string;
 
   @ApiProperty({ description: 'Web site banner image data or url' })
-  @Column({ length: 5000 })
-  bannerImage: string;
+  @Column({ length: 7000 })
+  imageFilePath: string;
 }
