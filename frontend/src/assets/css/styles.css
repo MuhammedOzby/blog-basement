@@ -1,0 +1,125 @@
+:root {
+	--main-bg-color: #e8e9e1;
+	--main-text-color: #5b6166;
+}
+
+#root {
+	height: 100%;
+}
+
+p {
+	text-indent: 15px;
+	margin-bottom: 15px;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('../fonts/Oswald-Light.ttf');
+	font-weight: lighter;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Oswald' !important;
+	padding: 0;
+	background-color: var(--main-bg-color);
+	color: var(--main-text-color) !important;
+}
+
+.custom-content {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 50px;
+}
+
+.custom-menu-box-desktop {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+hr {
+	background-color: var(--main-text-color) !important;
+}
+
+.title {
+	color: var(--main-text-color) !important;
+	margin: 0;
+}
+
+.menu {
+	list-style-type: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.menu li {
+	cursor: pointer;
+	color: var(--main-text-color) !important;
+}
+
+.menu-box {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: flex-end;
+	flex-wrap: nowrap;
+}
+
+.main-page-button {
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+	border: 3px solid var(--main-text-color);
+	color: var(--main-text-color);
+	background-color: var(--main-bg-color);
+	font-family: 'Oswald' !important;
+}
+
+.main-page-button:focus {
+	border-color: var(--main-text-color) !important;
+	color: #363636;
+}
+
+.social-icons {
+	margin-left: 15px;
+	color: var(--main-text-color) !important;
+}
+p a {
+	font-weight: bold;
+	color: var(--main-text-color) !important;
+	margin-left: 5px;
+}
+
+.drawer {
+	position: fixed;
+	right: 0;
+	height: 100%;
+	top: 0;
+	width: 350px;
+	padding: 15px;
+	background-color: var(--main-bg-color);
+	z-index: 999;
+}
+
+.main-menu-button {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	border: 3px solid var(--main-text-color);
+	color: var(--main-text-color);
+	background-color: var(--main-bg-color);
+	font-family: 'Oswald' !important;
+}
+
+.main-menu-button:focus {
+	cursor: pointer;
+	border-color: var(--main-text-color) !important;
+	color: #363636;
+}
