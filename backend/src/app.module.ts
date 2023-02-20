@@ -1,11 +1,12 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Post } from './Entities/Post.enitity';
-import { PostModule } from './post/post.module';
+import { Article } from './Entities/Article.enitity';
+import { ArticleModule } from './article/article.module';
 import { Settings } from './Entities/Settings.Entity';
 import { User } from './Entities/User.entity';
+import { SitePropsMiddleware } from './Middlewares/siteprops.middleware';
 
 const DatabaseSettings = TypeOrmModule.forRoot({
   type: 'mysql',
@@ -14,16 +15,20 @@ const DatabaseSettings = TypeOrmModule.forRoot({
   username: 'root',
   password: 'devdb',
   database: 'test',
-  entities: [Post, Settings, User],
+  entities: [Article, Settings, User],
   synchronize: true,
 });
 
 // ! Veri tabanı ayarı değildir. Kullanımda olan repolar içindir.
-const dbEntities = [TypeOrmModule.forFeature([Post])];
+const dbEntities = [TypeOrmModule.forFeature([Article, Settings])];
 
 @Module({
-  imports: [DatabaseSettings, PostModule, ...dbEntities],
+  imports: [DatabaseSettings, ArticleModule, ...dbEntities],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(SitePropsMiddleware).forRoutes({ path: '*', method: RequestMethod.GET });
+  }
+}
