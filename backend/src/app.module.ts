@@ -7,6 +7,8 @@ import { ArticleModule } from './article/article.module';
 import { Settings } from './Entities/Settings.Entity';
 import { User } from './Entities/User.entity';
 import { SitePropsMiddleware } from './Middlewares/siteprops.middleware';
+import { ApiModule } from './api/api.module';
+import { PhysicalAddress } from './Entities/PhysicalAddress.entitiy';
 
 const DatabaseSettings = TypeOrmModule.forRoot({
   type: 'mysql',
@@ -15,15 +17,15 @@ const DatabaseSettings = TypeOrmModule.forRoot({
   username: 'root',
   password: 'devdb',
   database: 'test',
-  entities: [Article, Settings, User],
+  entities: [Article, Settings, User, PhysicalAddress],
   synchronize: true,
 });
 
 // ! Veri tabanı ayarı değildir. Kullanımda olan repolar içindir.
-const dbEntities = [TypeOrmModule.forFeature([Article, Settings])];
+const dbEntities = [TypeOrmModule.forFeature([Article, Settings, User])];
 
 @Module({
-  imports: [DatabaseSettings, ArticleModule, ...dbEntities],
+  imports: [DatabaseSettings, ArticleModule, ...dbEntities, ApiModule],
   controllers: [AppController],
   providers: [AppService],
 })
