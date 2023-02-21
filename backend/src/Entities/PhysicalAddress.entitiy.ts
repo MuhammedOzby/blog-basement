@@ -1,28 +1,24 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Settings {
-  @PrimaryColumn({ select: false })
-  settingsID: 0;
+export class PhysicalAddress {
+  @PrimaryGeneratedColumn({})
+  addressID: number;
 
   @ApiProperty({ description: 'Web site main URL with http or https' })
   @Column()
-  websiteURL: string;
+  addressLocality: string;
 
   @ApiProperty({ description: 'Web site title & meta title' })
   @Column()
-  title: string;
+  addressRegion: string;
 
   @ApiProperty({ description: 'Web site description & meta description' })
   @Column()
-  description: string;
+  postalCode: string;
 
   @ApiProperty({ description: 'Web site banner image data or url' })
-  @Column({ length: 7000 })
-  imageFilePath: string;
-
-  @ApiProperty({ description: 'Web site welcome text on markdown' })
-  @Column({ type: 'text' })
-  welcomeText: string;
+  @Column()
+  streetAddress: string;
 }
