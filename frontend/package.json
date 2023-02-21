@@ -22,7 +22,10 @@
 		"react-markdown": "^8.0.3",
 		"react-router-dom": "^6.4.1",
 		"react-syntax-highlighter": "^15.5.0",
+		"rehype-katex": "^6.0.2",
 		"remark": "^14.0.2",
+		"remark-gfm": "^3.0.1",
+		"remark-math": "^5.1.1",
 		"sort-by": "^1.2.0",
 		"three": "^0.149.0",
 		"vite-plugin-pwa": "^0.14.4"
