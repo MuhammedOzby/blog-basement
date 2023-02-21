@@ -123,3 +123,22 @@ p a {
 	border-color: var(--main-text-color) !important;
 	color: #363636;
 }
+
+.content blockquote {
+	padding: 0.25em 0.5em;
+}
+
+code {
+	font-size: 1.1em;
+	background-color: transparent;
+	padding: 0;
+}
+
+.content pre {
+	background-color: transparent;
+	padding: 0;
+}
+
+.higlighter {
+	background-color: rgba(248, 248, 255, 0.8) !important;
+}
