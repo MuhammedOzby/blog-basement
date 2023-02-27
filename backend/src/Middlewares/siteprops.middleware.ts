@@ -23,6 +23,7 @@ export class SitePropsMiddleware implements NestMiddleware {
   }
 
   async getSiteProps(): Promise<Settings> {
-    return await this.settingsRepository.findOneBy({ settingsID: 0 });
+    const settings = await this.settingsRepository.findOneBy({ settingsID: 0 });
+    return { ...settings };
   }
 }
