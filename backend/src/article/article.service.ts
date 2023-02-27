@@ -14,7 +14,6 @@ export class ArticleService {
       select: [
         'articleID',
         'alternativeHeadline',
-        'alternativeHeadline',
         'dateCreated',
         'dateModified',
         'description',
