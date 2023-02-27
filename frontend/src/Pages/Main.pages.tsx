@@ -19,7 +19,7 @@ export default class MainPages extends Component {
 			{ title: 'ANA SAYFA', key: '' },
 			{ title: 'YAZILAR', key: 'articles' },
 			{ title: 'HAKKIMDA', key: 'about-me' },
-			{ title: 'İLETİŞİM', key: 'contact' },
+			{ title: 'PROFİL', key: 'profile' },
 			{ title: 'ÖZGEÇMİŞ', key: 'resume' },
 		];
 		this.SOCIAL_NETWORKS = [

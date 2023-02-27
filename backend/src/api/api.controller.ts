@@ -31,15 +31,15 @@ export class ApiController {
     return await this.apiService.getArticle(postID);
   }
 
-  @ApiTags('resume api')
+  @ApiTags('profile api')
   @ApiResponse({
     status: 200,
     description: 'Return a post',
     isArray: false,
     type: Article,
   })
-  @Get('resume')
-  async getResume() {
+  @Get('profile')
+  async getProfile() {
     return await this.apiService.getMainUser();
   }
 }

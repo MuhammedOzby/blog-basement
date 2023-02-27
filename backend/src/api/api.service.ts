@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ResumeSchema } from 'src/DTO/ResumeSchema.schema';
 import { Article } from 'src/Entities/Article.enitity';
 import { User } from 'src/Entities/User.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class ApiService {
+  private mainUser?: User;
   constructor(
     @InjectRepository(Article) private readonly articleRepository: Repository<Article>,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
@@ -32,7 +32,11 @@ export class ApiService {
     return this.articleRepository.findOne({ where: { articleID }, relations: ['author'] });
   }
 
+  /**
+   * Main user always has ID: 1
+   */
   async getMainUser(): Promise<User> {
-    return await this.userRepository.findOne({ where: { userID: 1 } });
+    if (!this.mainUser) this.mainUser = await this.userRepository.findOne({ where: { userID: 1 } });
+    return this.mainUser;
   }
 }
