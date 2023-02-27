@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/Entities/Article.enitity';
 import { Repository } from 'typeorm';
-import { Address, Article as ArticleLinkedData, Person } from '../lib/linkedData.referances';
+import { Article as ArticleLinkedData, Person } from '../lib/linkedData.referances';
 import { User } from 'src/Entities/User.entity';
 
 @Injectable()
@@ -51,23 +51,22 @@ export class ArticleService {
       editor,
       publisher,
     };
-
-    function personDataControl(person: User): Person {
-      delete person.userID;
-      delete person.address?.addressID;
-      if (person.address)
-        return {
-          '@context': 'https://schema.org/',
-          '@type': 'Person',
-          ...person,
-          address: {
-            '@context': 'https://schema.org/',
-            '@type': 'Address',
-            ...person.address,
-          },
-        };
-      if (!person.address)
-        return { '@context': 'https://schema.org/', '@type': 'Person', ...person, address: undefined };
-    }
   }
+}
+
+function personDataControl(person: User): Person {
+  delete person.userID;
+  delete person.address?.addressID;
+  if (person.address)
+    return {
+      '@context': 'https://schema.org/',
+      '@type': 'Person',
+      ...person,
+      address: {
+        '@context': 'https://schema.org/',
+        '@type': 'Address',
+        ...person.address,
+      },
+    };
+  if (!person.address) return { '@context': 'https://schema.org/', '@type': 'Person', ...person, address: undefined };
 }

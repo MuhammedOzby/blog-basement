@@ -11,6 +11,10 @@ export class Article {
   @Column()
   headline: string;
 
+  @ApiProperty({ example: 'Headline', description: 'Headline of the article.' })
+  @Column()
+  image: string;
+
   @ApiProperty({ example: 'Alternative Headline', description: 'A secondary title of the CreativeWork.' })
   @Column()
   alternativeHeadline: string;

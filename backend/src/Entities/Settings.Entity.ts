@@ -25,4 +25,32 @@ export class Settings {
   @ApiProperty({ description: 'Web site welcome text on markdown' })
   @Column({ type: 'text' })
   welcomeText: string;
+
+  @ApiProperty({ description: 'LinkedIn profile link' })
+  @Column({ nullable: true })
+  linkedin: string;
+
+  @ApiProperty({ description: 'Twitter profile link' })
+  @Column({ nullable: true })
+  twitter: string;
+
+  @ApiProperty({ description: 'HackerRank profile link' })
+  @Column({ nullable: true })
+  hackerrank: string;
+
+  @ApiProperty({ description: 'Stack Overflow profile link' })
+  @Column({ nullable: true })
+  stackoverflow: string;
+
+  @ApiProperty({ description: 'Github profile link' })
+  @Column({ nullable: true })
+  github: string;
+
+  @ApiProperty({ description: 'Discord profile link' })
+  @Column({ nullable: true })
+  discord: string;
+
+  @ApiProperty({ description: 'Mail address' })
+  @Column({ nullable: true })
+  mail: string;
 }

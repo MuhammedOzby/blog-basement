@@ -40,6 +40,6 @@ export class ApiController {
   })
   @Get('resume')
   async getResume() {
-    return await this.apiService.getResume();
+    return await this.apiService.getMainUser();
   }
 }
